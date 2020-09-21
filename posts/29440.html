@@ -1,0 +1,1368 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="多维无约束优化, 随笔、笔记、学习">
+    <meta name="description" content="个人思考，学习笔记，成长小记">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>多维无约束优化 | 青山白雪</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <link rel="stylesheet" href="/css/highlight/styles/vs2015.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">青山白雪</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">青山白雪</div>
+        <div class="logo-desc">
+            
+            个人思考，学习笔记，成长小记
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">多维无约束优化</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E6%9C%80%E4%BC%98%E5%8C%96/">
+                                <span class="chip bg-color">最优化</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%A4%9A%E7%BB%B4%E6%97%A0%E7%BA%A6%E6%9D%9F/">
+                                <span class="chip bg-color">多维无约束</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E6%9C%80%E4%BC%98%E5%8C%96%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/" class="post-category">
+                                最优化计算方法
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-05-27
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    3.3k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    14 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="多维无约束优化算法"><a href="#多维无约束优化算法" class="headerlink" title="多维无约束优化算法"></a>多维无约束优化算法</h1><p>在没有任何限制条件下寻求目标函数的极小点：<br>$$<br>    \displaystyle \min_{x \in R^n}f(x)<br>$$<br>求解方法有多种，主要不同点在于<strong>如何构造搜索方向</strong></p>
+<h2 id="最速下降法"><a href="#最速下降法" class="headerlink" title="最速下降法"></a>最速下降法</h2><h3 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h3><p>在每次迭代中，沿最速下降方向（负梯度方向）进行搜索，每一步沿负梯度方向取最优步长。</p>
+<ul>
+<li>只以一阶梯度的信息确定下一步的方向，收敛速度慢；越接近极值点，收敛越慢</li>
+<li>一般用于最优化开始的几步搜索</li>
+</ul>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>由泰勒公式：<br>$$<br>\bf{f(x + \lambda p) = f(x) + \lambda \Lambda^T(x)p + o(\lambda ||p||)}(\lambda&gt;0)<br>$$<br>由于$\bf{\Lambda^T(x)p = - ||\Lambda^T(x)||||p||cos\theta}$，$\theta$为$\bf{p}$与$\bf{-\Lambda(x)}$的夹角，当$\lambda$和$||p||$固定时，取$cos\theta = 1$可使$\Lambda^T(x)p$取最小值，$f(x)$下降最多。即当$\theta = 0$时，$f(x)$下降最快，此时有$\bf{p = - \nabla f(x)}$。</p>
+<p>从而算法的搜索方向$p^{(k)}$为负梯度方向$- \nabla f(x)$。故算法的迭代式为;<br>$$<br>x^{(k+1)} = x^{(k)} - \lambda_k \nabla f(x^{(k)})<br>$$</p>
+<h3 id="算法步骤"><a href="#算法步骤" class="headerlink" title="算法步骤"></a>算法步骤</h3><p>(1) 选取初始点估计值$x^{(0)}$，确定允许误差$\varepsilon$，令$k = 0$</p>
+<p>(2) 计算目标函数在$x^{(k)}$处的负梯度$ -  \nabla (x^{(k)})$</p>
+<p>(3) 检查收敛性，若$||\nabla (x^{(k)})|| \leq \varepsilon$，则$x^* = x^{(k)}$,计算终止，否则继续</p>
+<p>(4) 确定搜索方向,负梯度方向的单位向量：$p^{(k)} = \frac{- \nabla (x^{(k)})}{||\nabla (x^{(k)})||}$</p>
+<p>(5) 一维搜索</p>
+<p>以$x^{(k)}$为起点，沿负梯度方向$p^{(k)}$进行一维搜索，求得最优步长$\lambda_k$。使得：<br>$$<br>    f(x^{(k)} + \lambda_k p^{(k)}) = \displaystyle \min_{\lambda &gt;0} f(x^{(k)} + \lambda p^{(k)})<br>$$<br>下一个迭代点为:<br>$$<br>x^{(k+1)} = x^{(k)} - \lambda_k  p^{(k)}<br>$$<br>(6) $k = k + 1$，转(2)。</p>
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ul>
+<li>有很好的全局收敛性，任意初始点开始迭代，所产生的点列均收敛。</li>
+<li>收敛速度比较慢。所谓“最速方向”，仅仅反映函数$f(x)$在点$x^{(k)}$的局部性质，对整体来说，不一定就是下降最快的方向</li>
+<li>由最优步长$\lambda _k$的意义知：$(p^{(k)})^T \nabla f(x^{(k+1)}) = 0$，所以在相邻两次迭代中，搜索方向是相互正交的。</li>
+</ul>
+<h2 id="牛顿法"><a href="#牛顿法" class="headerlink" title="牛顿法"></a>牛顿法</h2><h3 id="基本思想-1"><a href="#基本思想-1" class="headerlink" title="基本思想"></a>基本思想</h3><p>每次迭代时，用适当的二次函数近似目标函数，并用迭代点指向近似二次函数极小点的方向来构造搜索方向。</p>
+<h3 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h3><p>$f$有二阶连续偏导数，$x^{(k)}$是$f$的极小点的第$k$次近似，$f$在近似点$x^{(k)}$处泰勒展开，二阶近似:<br>$$<br>f(x) \approx \varphi(x) = f(x^{(k)}) +  \nabla (x^{(k)})^T (x - x^{(k)}) + \frac{1}{2} (x - x^{(k)})^T H(x^{(k)})(x - x^{(k)})<br>$$<br>易见 $\varphi(x)$是二次函数，求它的极小值：令<br>$$<br>\nabla \varphi (x) = \nabla (x^{(k)}) + H(x^{(k)})(x - x^{(k)}) = 0<br>$$<br>若Hessian矩阵$H(x^{(k)})$正定，则$\varphi(x)$的驻点就是$\varphi(x)$的极小点。以它作为$f$的极小点的第$k+1$次近似，记为$x^{(k+1)}$，即:<br>$$<br>x^{(k+1)} = x^{(k)} + H^{-1}(x^{(k)})\nabla (x^{(k)})<br>$$<br>此式即为牛顿法迭代公式。</p>
+<h3 id="算法步骤-1"><a href="#算法步骤-1" class="headerlink" title="算法步骤"></a>算法步骤</h3><p>(1)  选取初始点估计值$x^{(0)}$，确定允许误差$\varepsilon$，令$k = 0$</p>
+<p>(2) 计算目标函数在$x^{(k)}$处的梯度$\nabla (x^{(k)})$</p>
+<p>(3)  检查收敛性，若$||\nabla (x^{(k)})|| \leq \varepsilon$，则$x^* = x^{(k)}$,计算终止，否则继续</p>
+<p>(4) 构造牛顿方向：$p^{(k)} = H^{-1}(x^{(k)})\nabla (x^{(k)})$</p>
+<p>(5) 更新点列：$x^{(k+1)} = x^{(k)} + p^{(k)}$</p>
+<p>(6) $k = k + 1$，转(2)。</p>
+<h3 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h3><ul>
+<li>要求$f(x)$是二阶可微函数，有时计算hessian矩阵的逆矩阵十分困难</li>
+<li>初始点与极小点的距离不宜太短，较远的话hessian矩阵奇异，此时牛顿方向可能不存在，迭代可能不收敛，甚至下降性也不能保证。</li>
+</ul>
+<h3 id="拟牛顿法"><a href="#拟牛顿法" class="headerlink" title="拟牛顿法"></a>拟牛顿法</h3><p>就是用梯度差分或者一个近似矩阵$H_k$去代替$H^{-1}(x^{(k)})$，以克服牛顿法中需要计算$H^{-1}(x^{(k)})$的缺点。</p>
+<p>不同构造$H_k$的方法，产生不同的拟牛顿法。</p>
+<h4 id="特点-2"><a href="#特点-2" class="headerlink" title="特点"></a>特点</h4><ul>
+<li>仅需要一阶导数</li>
+<li>保持正定，使方法具有下降性质</li>
+<li>每次迭代需要$o(n^2)$次乘法运算，牛顿法需要$o(n^4)$</li>
+<li>搜索方向相互共轭，具有二次终止性</li>
+</ul>
+<h2 id="阻尼牛顿法"><a href="#阻尼牛顿法" class="headerlink" title="阻尼牛顿法"></a>阻尼牛顿法</h2><h3 id="基本思想-2"><a href="#基本思想-2" class="headerlink" title="基本思想"></a>基本思想</h3><p>选择较优目标值的初始点是困难的，需要对牛顿法进行修正。</p>
+<p>牛顿法中，假设$\lambda _ k = 1$，但在阻尼牛顿法中，每一次的迭代需要计算搜索因子$\lambda _ k$,进行一次一维搜索，以保证算法的收敛或者加快收敛速度。</p>
+<h3 id="分析-2"><a href="#分析-2" class="headerlink" title="分析"></a>分析</h3><p>首先确定搜索方向：<br>$$<br>    p^{(k)} = - \nabla ^ 2 f(x^{(k)})^{-1} \nabla (f(x^{(k)}))<br>$$<br>然后求解一元函数寻优问题：<br>$$<br>f(x^{(k)} + \lambda _ k p^{(k)}) = \displaystyle \min_{\lambda &gt; 0}f(x^{(k)} + \lambda p^{(k)})<br>$$<br>得到阻尼牛顿法新的迭代点公式：<br>$$<br>x^{(k+1)} = x^{(k)} + \lambda _ k p^{(k)}<br>$$</p>
+<h3 id="算法步骤-2"><a href="#算法步骤-2" class="headerlink" title="算法步骤"></a>算法步骤</h3><p>(1)  选取初始点估计值$x^{(0)}$，确定允许误差$\varepsilon$，令$k = 0$</p>
+<p>(2) 计算目标函数在$x^{(k)}$处的梯度$\nabla (x^{(k)})$</p>
+<p>(3)  检查收敛性，若$||\nabla (x^{(k)})|| \leq \varepsilon$，则$x^* = x^{(k)}$,计算终止，否则继续</p>
+<p>(4) 构造牛顿方向：$p^{(k)} = H^{-1}(x^{(k)})\nabla (x^{(k)})$</p>
+<p>沿着$p^{(k)}$进行一维搜索求得最优搜索因子$\lambda _ k$：<br>$$<br>f(x^{(k)} + \lambda _ k p^{(k)}) = \displaystyle \min_{\lambda &gt; 0}f(x^{(k)} + \lambda p^{(k)})<br>$$<br>(5) 更新点列：$x^{(k+1)} = x^{(k)} + \lambda _ kp^{(k)}$</p>
+<p>(6) $k = k + 1$，转(2)。</p>
+<h3 id="特点-3"><a href="#特点-3" class="headerlink" title="特点"></a>特点</h3><ul>
+<li><p>保持了牛顿法收敛速度快的特点，降低了对初始点的选择要求</p>
+</li>
+<li><p>由此得到的点列${x^{(k)}}$有如下性质;</p>
+<p>(1) ${ f(x^{(k)}) }$为严格单调下降数列</p>
+<p>(2) ${x^{(k)}}$的任一极限点$\hat{x}$必为$f(x)$的极小点</p>
+</li>
+</ul>
+<h2 id="共轭方向法"><a href="#共轭方向法" class="headerlink" title="共轭方向法"></a>共轭方向法</h2><h3 id="基本思想-3"><a href="#基本思想-3" class="headerlink" title="基本思想"></a>基本思想</h3><p>牛顿法收敛速度快，但是计算困难，梯度法计算简便，但是收敛速度较慢。</p>
+<p>结合优点，就有了共轭方向法。</p>
+<p>原理就是利用矩阵A的共轭向量组作为搜索方向。</p>
+<h3 id="分析-3"><a href="#分析-3" class="headerlink" title="分析"></a>分析</h3><p>背景知识;</p>
+<p>$p_i$是A-共轭向量系是指：</p>
+<p>对于对称矩阵A，$p_i (i = 1, 2, …, m; m&lt;n)$为m维列向量组，满足$(p_i, p_j) _A = p_i ^T A p_j =0 (i \ne j)$。</p>
+<p>n阶正定阵A，$p_i \ne 0,(i = 0, 1, …, n - 1)$为A的共轭向量系，对于$\forall v \in R^n$，有$v=\sum_{i=0}^{n-1} \frac{p_i^T Av}{p_i^T A p_i} p_i$。 </p>
+<p>n阶正定阵A，$p_i \ne 0,(i = 0, 1, …, n - 1)$为A的共轭向量系，且二次函数式从n维欧式空间的任何初始点$x^{(0)}$开始，顺次沿着$p_i$方向作m次搜索得到$x^{(m)}$，则;</p>
+<ol>
+<li>$p_i ^ T \nabla (x^{(m)}) = 0,(i = 0, 1, …, m-1)$</li>
+<li>若$m = n$，则$x^{(n)}$就是$f(x)$的极小值点</li>
+</ol>
+<p>对任意选取的初始值$x^{(0)}$，至多迭代n步就可以收敛到$f(x)$的全局极小点$x^*$。</p>
+<p>对于任何一组线性无关的向量$v_i(i = 0, 1, …, n-1)$，求取矩阵A的一组共轭向量的算法为：<br>$$<br>p_0 = v_0,p_i = v_i - \sum_{j= 0}^{i -1} \frac{p_j^T A v_i}{p_j A p_j} p_j \qquad (j = 1, 2, …, n-1)<br>$$<br>算法执行过程中，为简便计算，可取$v_i$ 为单位阵中的列向量。</p>
+<p>得到共轭向量组$p_i(i = 0, 1, …, n-1)$，然后令下降方向为：$p^{(k)} = p_k (k = 0, 1, …, n-1)$，并且$\lambda _k$由一维搜索确定。</p>
+<p><strong>note</strong>: 算法中函数$f(x)$是用二阶泰勒展开式近似的，所以得到的最优解可能还不是极小点，因此可将该最优解作为初始值在进行一轮迭代，一般要重复多次，逐步达到极小点。</p>
+<h3 id="算法步骤-3"><a href="#算法步骤-3" class="headerlink" title="算法步骤"></a>算法步骤</h3><p>(1)  选取初始点估计值$x^{(0)}$，确定允许误差$\varepsilon$，令$k = 0$</p>
+<p>(2) 令$p^{(0)} = p_0 = v_0$，计算$\nabla (x^{(0)})$</p>
+<p>(3) 沿着$p^{(k)}$进行一维搜索求得最优搜索因子$\lambda _ k$：<br>$$<br>f(x^{(k)} + \lambda _ k p^{(k)}) = \displaystyle \min_{\lambda &gt; 0}f(x^{(k)} + \lambda p^{(k)})<br>$$<br>计算得到下一个迭代点：</p>
+<p>$x^{(k+1)} = x^{(k)} + \lambda _ kp^{(k)}$</p>
+<p>(4)  $k = k + 1$，计算$\nabla (x^{(k)})$</p>
+<p>(5)  检查收敛性，若$||\nabla (x^{(k)})|| \leq \varepsilon$，则$x^* = x^{(k)}$,计算终止，否则继续</p>
+<p>(6) 循环变量检查：若$k = n$，则转(8)，否则继续</p>
+<p>(7) 计算$p^{(k)} = p_k = v_k - \sum_{j= 0}^{k -1} \frac{p_j^T A v_k}{p_j A p_j} p_j $，转（3）</p>
+<p>(8) 开始下一轮迭代：令$x^{(0)} = x^{(n)},p^{(0)} = p_0 = v_0, \nabla (x^{(0)}) = \nabla (x^{(n)})$，转（3）</p>
+<h2 id="共轭梯度法"><a href="#共轭梯度法" class="headerlink" title="共轭梯度法"></a>共轭梯度法</h2><h3 id="基本思想-4"><a href="#基本思想-4" class="headerlink" title="基本思想"></a>基本思想</h3><p>在共轭方向法中，选取不同的初始线性无关向量组$v_i$ ，可以得到不同的A-共轭向量组。</p>
+<p>共轭梯度法，试讲目标函数在各点的负梯度$- \nabla (x{(i)}),(i = 0, 1, …., n-1)$作为共轭方法中的线性无关向量组$v_i (i = 0, 1, …., n-1)$，从而构成A的共轭向量组$p_i (i = 0, 1, …., n-1)$。</p>
+<h3 id="算法步骤-4"><a href="#算法步骤-4" class="headerlink" title="算法步骤"></a>算法步骤</h3><p>(1)  选取初始点估计值$x^{(0)}$，确定允许误差$\varepsilon$，令$k = 0$</p>
+<p>(2) 计算$\nabla (x^{(0)})$，令$p^{(0)} = -\nabla (x^{(0)})$</p>
+<p>(3) 一维搜索求得最优搜索因子$\lambda _ k$：<br>$$<br>f(x^{(k)} + \lambda _ k p^{(k)}) = \displaystyle \min_{\lambda &gt; 0}f(x^{(k)} + \lambda p^{(k)})<br>$$<br>计算得到下一个迭代点：</p>
+<p>$x^{(k+1)} = x^{(k)} + \lambda _ kp^{(k)}$</p>
+<p>(4)  $k = k + 1$，计算$\nabla (x^{(k)})$</p>
+<p>(5) 检查收敛性，若$||\nabla (x^{(k)})|| \leq \varepsilon$，则$x^* = x^{(k)}$,计算终止，否则继续</p>
+<p>(6)  循环变量检查：若$k = n$，则转(8)，否则继续</p>
+<p>(7) 计算$p^{(k)} = - \nabla (x^{(k)}) + \frac{(\nabla(x^{(k)})) ^T A p^{(k - 1)}}{(p^{(k-1)})^T A p^{(k-1)}} p^{(k-1)}$</p>
+<p>转(3)</p>
+<p>(8) 开始下一轮迭代：令$x^{(0)} = x^{(n)},p^{(0)}= -\nabla (x^{(0)})$，转（3）</p>
+<h3 id="note"><a href="#note" class="headerlink" title="note"></a>note</h3><p>(7)中使用矩阵A，对于二次型函数，A已经存在，非二次型函数，可以用$H(x^{(k)})$代替矩阵A，这样一来计算量很大。</p>
+<p>用FR公式避免Hessian矩阵的计算，(7)中公式改写为：$p^{(k)} = - \nabla (x^{(k)}) + \beta _ {k-1} p^{(k-1)}$.</p>
+<p>经过推导，得到FR公式为：<br>$$<br>\beta _{k-1} = \frac{(\nabla(x^{(k)})) ^T \nabla (x^{(k)})}{(\nabla(x^{(k-1)})) ^T \nabla (x^{(k-1)})} = \frac{||\nabla (x^{(k)})||^2}{||\nabla (x^{(k-1)})|| ^ 2}<br>$$<br>步骤(7) 改写为：</p>
+<p>计算$\beta _{k-1},p^{(k)} = - \nabla (x^{(k)}) + \beta _ {k-1} p^{(k-1)}$,转（3）</p>
+<p>此外还有PRF与DM公式。</p>
+<p><img src="1.png" alt="公式详情"></p>
+<h2 id="变尺度法（DFP）"><a href="#变尺度法（DFP）" class="headerlink" title="变尺度法（DFP）"></a>变尺度法（DFP）</h2><p>拟牛顿法的一种，变尺度法是求解无约束极值问题的一种有效方法。为克服梯度法收敛慢和Newton法计算工作量大的缺点而提出来的一种算法</p>
+<h4 id="基本思想-5"><a href="#基本思想-5" class="headerlink" title="基本思想"></a>基本思想</h4><p>梯度法中，沿最速下降方向搜索，有局部特征，产生拉锯现象，收敛较慢，沿牛顿方向收敛快，但是计算Hessian矩阵困难。</p>
+<p>因此，构造矩阵$H_k$按照：<br>$$<br>p^{(k)} = - H_k \nabla (x^{(k)})<br>$$<br>选择搜索方向。</p>
+<p>为保证下降方向且计算简便，要求$H_k$;</p>
+<ul>
+<li>正定</li>
+<li>递推关系$H_{k+1} = H_k + \Delta H_k$</li>
+</ul>
+<h4 id="DFP算法"><a href="#DFP算法" class="headerlink" title="DFP算法"></a>DFP算法</h4><p>$$<br>\Delta H_k = \frac{\Delta x^{(k)} (\Delta x^{(k)}) ^T}{(\Delta x^{(k)}) ^T q_k} - \frac{H_k q_k q_k^T H_k}{q_k^T H_k q_k}<br>$$</p>
+<h4 id="BFGS-算法"><a href="#BFGS-算法" class="headerlink" title="BFGS 算法"></a>BFGS 算法</h4><p>$$<br>\Delta H_k = \frac{q_k^T H_k q_k \Delta x^{(k)} (\Delta x^{(k)}) ^T}{((\Delta x^{(k)}) ^T q_k)^2} - \frac{\Delta x^{(k)} q_k^T H_k}{(\Delta x^{(k)}) ^T q_k} - \frac{H_k q_k (\Delta x^{(k)}) ^T}{(\Delta x^{(k)}) ^T q_k} + \frac{\Delta x^{(k)} (\Delta x^{(k)}) ^T}{(\Delta x^{(k)}) ^T q_k} \<br>= (I - \frac{\Delta x^{(k)} q_k^T}{(\Delta x^{(k)}) ^T q_k}) H_k (I - \frac{\Delta x^{(k)} q_k^T}{(\Delta x^{(k)}) ^T q_k}) + \frac{\Delta x^{(k)} (\Delta x^{(k)}) ^T}{(\Delta x^{(k)}) ^T q_k}<br>$$</p>
+<p>$q_k = \nabla (x^{(k+1)}) - \nabla (x^{(k)})$</p>
+<h4 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h4><p>(1)  选取初始点估计值$x^{(0)}$，确定允许误差$\varepsilon$，选取初始矩阵$H_0 =I$</p>
+<p>(2) 计算$f_0 = f(x^{(0)}),\nabla_0 = \nabla (x^{(0)})$，令$p^{(0)} = - \nabla _0,k = 0$</p>
+<p>(3) 检查收敛性，若$||\nabla _0|| \leq \varepsilon$，则$x^* = x^{(0)}$,计算终止，否则继续</p>
+<p>(4) 一维搜索求得最优步长$\lambda _ k$：<br>$$<br>f(x^{(k)} + \lambda _ k p^{(k)}) = \displaystyle \min_{\lambda &gt; 0}f(x^{(k)} + \lambda p^{(k)})<br>$$<br>计算得到下一个迭代点：</p>
+<p>$x^{(k+1)} = x^{(k)} + \lambda _ kp^{(k)}$</p>
+<p>之后计算$f_{k+1} = f(x^{(k+1)}), \nabla _{k+1} = \nabla (x^{(k+1)})$</p>
+<p>(5) 检查收敛性，若$||\nabla _{k+1} || \leq \varepsilon$，则$x^* = x^{(k+1)}$,计算终止，否则继续</p>
+<p>(6) 正定检查，即检查函数值是否下降，若$f_{k+1} \geq f_k$，则令$x^{(0)} = x^(k),f_0 = f_k, \nabla _0 = \nabla _k , H_0 = I, k =0$，转（4），否则继续</p>
+<p>(7) 检查迭代次数：</p>
+<p>若$k = n -1$，则转(9)，否则继续</p>
+<p>(8) 计算$q_k = \nabla (x^{(k+1)}) - \nabla (x^{(k)})$,使用DFP算法或者BFGS算法计算$H_{k+1}$，确定搜索方向$p^{(k+1)} = - H_{k+1} \nabla (x^{(k+1)})$，令$k = k+1$,转（3）</p>
+<p>(9) 令$x^{(0)} = x^(n),f_0 = f_n, \nabla_0 = \nabla _n, H_0 = I , k=0$，转（4）</p>
+<h4 id="特点-4"><a href="#特点-4" class="headerlink" title="特点"></a>特点</h4><ul>
+<li>避免二阶导数矩阵及其求逆计算</li>
+<li>比梯度法收敛速度快</li>
+</ul>
+<p>编程数值计算多元函数的梯度和海因矩阵。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>多维无约束优化算法，其中变尺度法迭代中选取的搜索方向是共轭的，故将变尺度法和共轭梯度法归结为一类算法。</p>
+
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Di</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://first-li.github.io/posts/29440.html">http://first-li.github.io/posts/29440.html</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Di</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E6%9C%80%E4%BC%98%E5%8C%96/">
+                                    <span class="chip bg-color">最优化</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%A4%9A%E7%BB%B4%E6%97%A0%E7%BA%A6%E6%9D%9F/">
+                                    <span class="chip bg-color">多维无约束</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/zhifubao.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/weixin.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+        <div class="disqus-card card" data-aos="fade-up">
+    <div id="disqus_thread" class="card-content">
+        <noscript>Please enable JavaScript to view the
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+    </div>
+</div>
+
+<script type="text/javascript">
+    disqus_config = function () {
+        this.page.url = 'http://first-li.github.io/posts/29440.html';
+        this.page.identifier = '/posts/29440.html';
+        this.page.title = '多维无约束优化';
+    };
+    let disqus_shortname = 'lovetea';
+
+    (function () { // DON'T EDIT BELOW THIS LINE
+        let d = document, s = d.createElement('script');
+        // 如：s.src = 'https://blinkfox.disqus.com/embed.js';
+        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+    
+
+    
+    <div class="livere-card card" data-aos="fade-up">
+    <!-- 来必力City版安装代码 -->
+    <div id="lv-container" class="card-content" data-id="city" data-uid="MTAyMC81MDEyMi8yNjYxMg==">
+        <script type="text/javascript">
+            (function (d, s) {
+                let j, e = d.getElementsByTagName(s)[0];
+                if (typeof LivereTower === 'function') {
+                    return;
+                }
+
+                j = d.createElement(s);
+                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                j.async = true;
+
+                e.parentNode.insertBefore(j, e);
+            })(document, 'script');
+        </script>
+        <noscript>为正常使用来必力评论功能请激活JavaScript。</noscript>
+    </div>
+    <!-- City版安装代码已完成 -->
+</div>
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/posts/61030.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="传播现象">
+                        
+                        <span class="card-title">传播现象</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            学习网络的传播现象
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-09-21
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%BD%91%E7%BB%9C%E7%A7%91%E5%AD%A6/" class="post-category">
+                                    网络科学
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/network/">
+                        <span class="chip bg-color">network</span>
+                    </a>
+                    
+                    <a href="/tags/%E4%BC%A0%E6%92%AD%E6%A8%A1%E5%9E%8B/">
+                        <span class="chip bg-color">传播模型</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/35470.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="非线性一维搜索与典型算法">
+                        
+                        <span class="card-title">非线性一维搜索与典型算法</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            分析一维搜索的基本思想与典型算法的分析
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-26
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%9C%80%E4%BC%98%E5%8C%96%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/" class="post-category">
+                                    最优化计算方法
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%9C%80%E4%BC%98%E5%8C%96/">
+                        <span class="chip bg-color">最优化</span>
+                    </a>
+                    
+                    <a href="/tags/%E4%B8%80%E7%BB%B4%E6%90%9C%E7%B4%A2/">
+                        <span class="chip bg-color">一维搜索</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 青山白雪<br />'
+            + '文章作者: 快乐青年<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+    <script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h1, h2, h3, h4, h5, h6'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4, h5, h6').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="151926111"
+                   fixed='true'
+                   autoplay='true'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2020</span>
+            <a href="/about" target="_blank">快乐青年</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2020";
+                    var startMonth = "5";
+                    var startDate = "15";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+    <a href="mailto:2541226630@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/search.xml", 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+    <script type="text/javascript" color="0,0,255"
+        pointColor="0,0,255" opacity='0.7'
+        zIndex="-1" count="99"
+        src="/libs/background/canvas-nest.js"></script>
+    
+
+    
+    
+    <script type="text/javascript" size="150" alpha='0.6'
+        zIndex="-1" src="/libs/background/ribbon-refresh.min.js" async="async"></script>
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
